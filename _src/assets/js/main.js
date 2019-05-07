@@ -1,18 +1,12 @@
 'use strict';
 
-console.log('>> Ready :)');
-
 const cards4 = document.querySelector('#four_cards');
 const cards6 = document.querySelector('#six_cards');
 const cards8 = document.querySelector('#eight_cards');
 const button = document.querySelector('.btn');
 const resultsCards = document.querySelector('.cards');
 const adalabCard = 'https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB';
-
 let number = 0;
-const arrPokemon = [];
-
-// Function select input
 
 function choosePairs() {
   if (cards4.checked) {
@@ -25,15 +19,10 @@ function choosePairs() {
     number = 8;
     saveData(8);
   }
-  console.log (number);
   const api = `https://raw.githubusercontent.com/Adalab/cards-data/master/${number}.json`;
   getInfo(api);
-  console.log(api);
 }
-
 button.addEventListener('click',choosePairs);
-
-// function to get info from url
 
 function getInfo(url) {
   resultsCards.innerHTML = '';
@@ -56,8 +45,6 @@ function getInfo(url) {
   button.addEventListener('click',getInfo);
 }
 
-// Función ocultar las vistas frontales y muestro la traseras
-
 function flipCards (event){
   const cards = event.currentTarget;
   const cardPokemon = cards.querySelector('.cards__image-pokemon');
@@ -65,10 +52,6 @@ function flipCards (event){
   cardPokemon.classList.toggle('hidden');
   cardAda.classList.toggle('hidden');
 }
-
-
-
-// Local
 
 const saveValue = localStorage.getItem('inputValue');
 inputValue();
@@ -82,7 +65,6 @@ function inputValue() {
     cards8.checked = true;
   }
 }
-
 
 function saveData(number){
   localStorage.setItem('inputValue',number);
